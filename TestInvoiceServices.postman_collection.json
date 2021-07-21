@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "66eecfea-7ae1-4a94-9d29-56afe31269cc",
+		"name": "TestInvoiceServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"const schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\" : {",
+							"        \"id\" : {\"type\" : \"number\"},",
+							"        \"customerId\" : {\"type\" : \"number\"},",
+							"        \"invoiceNumber\" : {\"type\" : \"string\"},",
+							"        \"vendorName\" : {\"type\" : \"string\"},",
+							"        \"amount\" : {\"type\" : \"number\"},",
+							"        \"invoiceDescription\" : {\"type\" : \"string\"}",
+							"    }",
+							"};",
+							"",
+							"pm.test (\"validate schema\", function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"const body = pm.response.json();",
+							"",
+							"pm.test(\"test id value\", function() {",
+							"    pm.expect(body).to.have.property(\"id\",1)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/invoices/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateInvoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"const schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\" : {",
+							"        \"id\" : {\"type\" : \"number\"},",
+							"        \"customerId\" : {\"type\" : \"number\"},",
+							"        \"invoiceNumber\" : {\"type\" : \"string\"},",
+							"        \"vendorName\" : {\"type\" : \"string\"},",
+							"        \"amount\" : {\"type\" : \"number\"},",
+							"        \"invoiceDescription\" : {\"type\" : \"string\"}",
+							"    }",
+							"};",
+							"",
+							"pm.test (\"validate schema\", function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"const body = pm.response.json();",
+							"",
+							"pm.test(\"test id value\", function() {",
+							"    pm.expect(body).to.have.property(\"id\")",
+							"});",
+							"",
+							"pm.test(\"test vendorName attribute value\", function() {",
+							"    pm.expect(body).to.have.property(\"vendorName\", \"Test\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 11,\n    \"invoiceNumber\": \"123456\",\n    \"vendorName\": \"Test\",\n    \"amount\": 99.9,\n    \"invoiceDescription\": \"Test Products\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateInvoice-failure",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check error status\", function(){",
+							"    pm.response.to.be.error",
+							"});",
+							"",
+							"const schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\" : {",
+							"        \"timestamp\" : {\"type\" : \"string\"},",
+							"        \"status\" : {\"type\" : \"number\"},",
+							"        \"error\" : {\"type\" : \"string\"},",
+							"        \"path\" : {\"type\" : \"string\"}",
+							"    }",
+							"};",
+							"",
+							"pm.test (\"validate schema\", function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": \"999\",\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateInvoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"const schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\" : {",
+							"        \"id\" : {\"type\" : \"number\"},",
+							"        \"customerId\" : {\"type\" : \"number\"},",
+							"        \"invoiceNumber\" : {\"type\" : \"string\"},",
+							"        \"vendorName\" : {\"type\" : \"string\"},",
+							"        \"amount\" : {\"type\" : \"number\"},",
+							"        \"invoiceDescription\" : {\"type\" : \"string\"}",
+							"    }",
+							"};",
+							"",
+							"pm.test (\"validate schema\", function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"const body = pm.response.json();",
+							"",
+							"pm.test(\"test id value\", function() {",
+							"    pm.expect(body).to.have.property(\"id\",1)",
+							"});",
+							"",
+							"pm.test(\"test updated customerId attribute value\", function() {",
+							"    pm.expect(body).to.have.property(\"customerId\", 12)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 12,\n    \"invoiceNumber\": \"123456\",\n    \"vendorName\": \"Test\",\n    \"amount\": 99.9,\n    \"invoiceDescription\": \"Test Products\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/invoices/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteInvoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"pm.test(\"test empty body\", function() {",
+							"    pm.response.to.not.have.body",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/invoices/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteInvoice-failure",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check status\", function(){",
+							"    pm.response.to.have.status(500)",
+							"});",
+							"",
+							"const schema = {",
+							"    \"type\" : \"object\",",
+							"    \"properties\" : {",
+							"        \"timestamp\" : {\"type\" : \"string\"},",
+							"        \"status\" : {\"type\" : \"number\"},",
+							"        \"error\" : {\"type\" : \"string\"},",
+							"        \"path\" : {\"type\" : \"string\"}",
+							"    }",
+							"};",
+							"",
+							"pm.test (\"validate schema\", function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/invoices/500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invoices",
+						"500"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

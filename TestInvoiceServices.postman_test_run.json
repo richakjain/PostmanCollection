@@ -1,0 +1,270 @@
+{
+	"id": "f26c2828-0a01-4d80-a591-8d3bf042375d",
+	"name": "TestInvoiceServices",
+	"timestamp": "2021-07-21T03:45:31.036Z",
+	"collection_id": "16711070-66eecfea-7ae1-4a94-9d29-56afe31269cc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 17,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "81916616-f566-427d-8345-1b5ea36037d1",
+			"name": "GetById",
+			"url": "http://localhost:8080/invoices/1",
+			"time": 655,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status": true,
+				"validate schema": true,
+				"test id value": true
+			},
+			"testPassFailCounts": {
+				"check status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test id value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				655
+			],
+			"allTests": [
+				{
+					"check status": true,
+					"validate schema": true,
+					"test id value": true
+				}
+			]
+		},
+		{
+			"id": "4c04f042-0ab8-4316-9878-4729ecec48ab",
+			"name": "CreateInvoice",
+			"url": "http://localhost:8080/invoices",
+			"time": 154,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status": true,
+				"validate schema": true,
+				"test id value": true,
+				"test vendorName attribute value": true
+			},
+			"testPassFailCounts": {
+				"check status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test id value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test vendorName attribute value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				154
+			],
+			"allTests": [
+				{
+					"check status": true,
+					"validate schema": true,
+					"test id value": true,
+					"test vendorName attribute value": true
+				}
+			]
+		},
+		{
+			"id": "9b41fefd-245a-444f-925b-4471bbe6c9c3",
+			"name": "CreateInvoice-failure",
+			"url": "http://localhost:8080/invoices",
+			"time": 79,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"check error status": true,
+				"validate schema": true
+			},
+			"testPassFailCounts": {
+				"check error status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate schema": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				79
+			],
+			"allTests": [
+				{
+					"check error status": true,
+					"validate schema": true
+				}
+			]
+		},
+		{
+			"id": "9db9b42d-af75-4f5c-add2-cb84d17b09f5",
+			"name": "UpdateInvoice",
+			"url": "http://localhost:8080/invoices/1",
+			"time": 28,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status": true,
+				"validate schema": true,
+				"test id value": true,
+				"test updated customerId attribute value": true
+			},
+			"testPassFailCounts": {
+				"check status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test id value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test updated customerId attribute value": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				28
+			],
+			"allTests": [
+				{
+					"check status": true,
+					"validate schema": true,
+					"test id value": true,
+					"test updated customerId attribute value": true
+				}
+			]
+		},
+		{
+			"id": "371d6d67-8603-456e-af59-c42706149f21",
+			"name": "DeleteInvoice",
+			"url": "http://localhost:8080/invoices/5",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"check status": true,
+				"test empty body": true
+			},
+			"testPassFailCounts": {
+				"check status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"test empty body": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"check status": true,
+					"test empty body": true
+				}
+			]
+		},
+		{
+			"id": "e585ba3e-7c3c-496d-be30-5dcd0c2c2379",
+			"name": "DeleteInvoice-failure",
+			"url": "http://localhost:8080/invoices/500",
+			"time": 33,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"check status": true,
+				"validate schema": true
+			},
+			"testPassFailCounts": {
+				"check status": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate schema": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"check status": true,
+					"validate schema": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 983,
+	"collection": {
+		"requests": [
+			{
+				"id": "81916616-f566-427d-8345-1b5ea36037d1",
+				"method": "GET"
+			},
+			{
+				"id": "4c04f042-0ab8-4316-9878-4729ecec48ab",
+				"method": "POST"
+			},
+			{
+				"id": "9b41fefd-245a-444f-925b-4471bbe6c9c3",
+				"method": "POST"
+			},
+			{
+				"id": "9db9b42d-af75-4f5c-add2-cb84d17b09f5",
+				"method": "PUT"
+			},
+			{
+				"id": "371d6d67-8603-456e-af59-c42706149f21",
+				"method": "DELETE"
+			},
+			{
+				"id": "e585ba3e-7c3c-496d-be30-5dcd0c2c2379",
+				"method": "DELETE"
+			}
+		]
+	}
+}
